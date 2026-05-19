@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>København — Chloe's Pocket</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..600;1,9..144,200..500&family=Plus+Jakarta+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf9f4;
+    --paper: #f6f4ed;
+    --ink: #1c1a17;
+    --ink-soft: #8a8479;
+    --ink-faint: #c5c0b3;
+    --line: #ebe7da;
+    --line-soft: #f1eee4;
+    --hairline: rgba(28, 26, 23, 0.14);
+    --accent: #5d6b54;
+    --accent-soft: #aab2a0;
+    --serif: "Fraunces", "PP Editorial New", "Cormorant Garamond", "New York", "Songti TC", Georgia, serif;
+    --sans: "Plus Jakarta Sans", "Geist", "SF Pro Text", -apple-system, system-ui, "Hiragino Sans", "Noto Sans TC", "PingFang TC", sans-serif;
+    --max: 880px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 14.5px;
+    line-height: 1.65;
+    letter-spacing: 0.005em;
+    padding: 96px 36px 140px;
+    font-weight: 300;
+    position: relative;
+  }
+  /* Subtle film-grain overlay for tactile depth */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>");
+    mix-blend-mode: multiply;
+  }
+  .wrap { max-width: var(--max); margin: 0 auto; position: relative; z-index: 1; }
+
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    margin-bottom: 96px;
+    font-size: 9.5px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .meta-row .dot {
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 10px;
+    vertical-align: middle;
+  }
+  .meta-row strong { color: var(--ink); font-weight: 500; }
+
+  header {
+    margin-bottom: 140px;
+    position: relative;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 250;
+    font-size: 132px;
+    letter-spacing: -0.04em;
+    line-height: 0.86;
+    margin-bottom: 0;
+    color: var(--ink);
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+  }
+  h1 .alt {
+    font-style: italic;
+    font-weight: 200;
+    color: var(--accent);
+    letter-spacing: -0.035em;
+  }
+  h1 .small {
+    display: block;
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 56px;
+    font-weight: 500;
+  }
+  h1 .small em {
+    font-style: normal;
+    color: var(--accent);
+    margin: 0 6px;
+    font-weight: 400;
+  }
+
+  section {
+    margin-bottom: 120px;
+    page-break-inside: auto;
+  }
+
+  .section-head {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-bottom: 22px;
+    margin-bottom: 44px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: transparent;
+    box-shadow: inset 0 0 0 1px rgba(28, 26, 23, 0.12);
+    font-family: var(--sans);
+    font-size: 9.5px;
+    letter-spacing: 0.28em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .section-eyebrow::before {
+    content: "Part";
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.22em;
+  }
+  .section-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .section-head h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 56px;
+    letter-spacing: -0.028em;
+    color: var(--ink);
+    line-height: 1;
+    font-variation-settings: "opsz" 100;
+  }
+  .section-head h2 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 250;
+  }
+  .section-head .count {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .place {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 0 32px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--hairline);
+    page-break-inside: avoid;
+    transition: opacity 600ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .place:last-child { border-bottom: none; }
+  .place-index {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 24px;
+    letter-spacing: -0.02em;
+    color: var(--ink-faint);
+    font-weight: 250;
+    padding-top: 2px;
+    line-height: 1;
+  }
+  .place-body {
+    max-width: 620px;
+  }
+  .place-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+  .place-name {
+    font-family: var(--serif);
+    font-size: 27px;
+    font-weight: 300;
+    letter-spacing: -0.022em;
+    color: var(--ink);
+    line-height: 1.18;
+    font-variation-settings: "opsz" 60;
+  }
+  .place-tag {
+    font-size: 8.5px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: transparent;
+    box-shadow: inset 0 0 0 1px rgba(93, 107, 84, 0.4);
+    border: 0;
+    padding: 4px 9px 3px;
+    border-radius: 999px;
+    line-height: 1;
+    align-self: center;
+    font-weight: 500;
+  }
+  .place-tag.muted {
+    color: var(--ink-soft);
+    box-shadow: inset 0 0 0 1px rgba(28, 26, 23, 0.1);
+  }
+  .place-desc {
+    color: var(--ink);
+    font-size: 14.5px;
+    line-height: 1.75;
+    margin: 10px 0 14px;
+    font-weight: 300;
+    letter-spacing: 0.005em;
+  }
+  .place-meta {
+    color: var(--ink-soft);
+    font-size: 12.5px;
+    letter-spacing: 0.01em;
+    margin-bottom: 18px;
+    padding: 8px 14px;
+    background: var(--paper);
+    border-radius: 8px;
+    border: 0;
+    box-shadow: inset 0 0 0 1px rgba(28, 26, 23, 0.04);
+    display: inline-block;
+    font-weight: 300;
+  }
+  .place-meta::before { content: "↳ "; color: var(--accent); margin-right: 4px; }
+  .place-link {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px 7px 16px;
+    border-radius: 999px;
+    box-shadow: inset 0 0 0 1px rgba(28, 26, 23, 0.16);
+    font-weight: 500;
+    transition: all 400ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .place-link::after {
+    content: "↗";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--bg);
+    font-size: 9px;
+    letter-spacing: 0;
+    transition: transform 400ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .place-link:hover {
+    box-shadow: inset 0 0 0 1px var(--accent);
+    color: var(--accent);
+  }
+  .place-link:hover::after {
+    background: var(--accent);
+    transform: translate(2px, -2px) scale(1.06);
+  }
+
+  footer {
+    margin-top: 120px;
+    padding-top: 22px;
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--ink-soft);
+    font-size: 9.5px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  footer i {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    text-transform: none;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    font-size: 14px;
+  }
+
+  @media print {
+    body { padding: 32px; background: white; font-weight: 300; }
+    body::before { display: none; }
+    h1 { font-size: 80px; }
+    .section-head h2 { font-size: 42px; }
+    .place { page-break-inside: avoid; }
+    section { page-break-inside: auto; }
+    .section-head { page-break-after: avoid; }
+    .place-link {
+      color: var(--ink);
+      box-shadow: inset 0 0 0 1px rgba(28, 26, 23, 0.2);
+    }
+    .place-link::after { background: var(--ink); color: white; }
+  }
+  @media (max-width: 640px) {
+    body { padding: 52px 22px 96px; }
+    h1 { font-size: 64px; letter-spacing: -0.035em; }
+    h1 .small { letter-spacing: 0.3em; margin-top: 36px; }
+    header { margin-bottom: 80px; }
+    .section-head h2 { font-size: 36px; }
+    section { margin-bottom: 72px; }
+    .place { grid-template-columns: 44px 1fr; gap: 0 18px; padding: 24px 0; }
+    .place-index { font-size: 18px; }
+    .place-name { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="meta-row">
+  <span><strong>Pocket Guide</strong><span class="dot"></span>By Chloe</span>
+  <span>Edition One · København</span>
+</div>
+
+<header>
+  <h1>
+    Køben<span class="alt">havn</span>
+    <span class="small">Copenhagen</span>
+  </h1>
+</header>
+
+<section>
+  <div class="section-head">
+    <div class="section-eyebrow">01</div>
+    <div class="section-row">
+      <h2>Eat &amp; Drink</h2>
+      <div class="count">餐廳 · 11</div>
+    </div></div>
+
+  <div class="place">
+    <div class="place-index">01</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Kong Hans Kælder</span></div>
+      <p class="place-desc">12 世紀拱頂酒窖裡的米其林星級餐廳，New Nordic 高端料理。我給過 5 星評論。</p>
+      <p class="place-meta">適合大日子。記得訂位。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Kong+Hans+K%C3%A6lder/data=!4m2!3m1!1s0x46525317a4e4d65d:0xec9331c18869a33b" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">02</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Det Lille Apotek</span></div>
+      <p class="place-desc">1720 年開業的「小藥房」餐廳，安徒生跟齊克果常客。傳統丹麥菜，木頭氛圍。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Det+Lille+Apotek/data=!4m2!3m1!1s0x4652531067c79e07:0xabf6bfd37ae409a2" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">03</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Restaurant Puk</span></div>
+      <p class="place-desc">老派丹麥館子，在地下室。frikadeller、smørrebrød。本地客多，CP 值穩。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Restaurant+Puk/data=!4m2!3m1!1s0x465253117e773ba5:0xfa4906006273e5ec" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">04</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Cafe Gammeltorv — Smørrebrød</span></div>
+      <p class="place-desc">中央區的經典 smørrebrød 店。鯡魚配黑麥麵包 + snaps，午餐儀式感到位。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Cafe+Gammeltorv+-+Sm%C3%B8rrebr%C3%B8d+K%C3%B8benhavn/data=!4m2!3m1!1s0x46525311c389fb65:0xb32960246942ba6" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">05</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Hallernes Smørrebrød (Magasin)</span></div>
+      <p class="place-desc">Hallernes 旗艦店，在 Magasin du Nord 百貨裡。傳統 smørrebrød 用有機在地食材，可坐開放廚房旁。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Hallernes+Magasin/data=!4m2!3m1!1s0x46525317bdf67733:0x8ceeaab985ea89df" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">06</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Restaurant Madklubben Vesterbro</span></div>
+      <p class="place-desc">丹麥的人氣 bistro 連鎖，三道菜套餐 CP 值好。Vesterbro 這家氣氛年輕。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Restaurant+Madklubben+Vesterbro/data=!4m2!3m1!1s0x4652530aca9223d7:0xde72980de62373a1" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">07</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">PS Bar &amp; Grill</span></div>
+      <p class="place-desc">紐約風 bar &amp; grill，分享式小盤 + 烤肉 + 雞尾酒。週末晚上慢慢轉成酒吧。Pilestræde 那家有戶外座位。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/PS+Bar+%26+Grill/data=!4m2!3m1!1s0x4652531743064e47:0xc8de1e7343b180b" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">08</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">l'Alsace</span></div>
+      <p class="place-desc">Pistolstræde 的法式 bistro，主廚法奧背景。Flammkuchen、Bouillabaisse 是招牌。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/l%E2%80%99Alsace/data=!4m2!3m1!1s0x4652531762979bd9:0x5a4a02c78f6b48fa" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">09</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">nihao YAO</span></div>
+      <p class="place-desc">Nørrebro 的小小台菜家庭餐廳。刈包、餛飩、黑糖珍奶，份量小盤適合分享。</p>
+      <p class="place-meta">週一公休。Rantzausgade 52。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/nihao+YAO/data=!4m2!3m1!1s0x465253aedfd59ee1:0x3e27bf8be385832c" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">10</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">The Market Asian</span><span class="place-tag muted">狀態待確認</span></div>
+      <p class="place-desc">內城區亞洲 fusion，開放廚房，晚上九點後變酒吧。最新資訊顯示「即將進入下一階段」，去前先查。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/The+Market+Asian/data=!4m2!3m1!1s0x4652531744b5a319:0x884539919b202255" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">11</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">DØP — The Organic Sausage Man</span><span class="place-tag">街邊</span></div>
+      <p class="place-desc">超好吃的有機 pølser（丹麥熱狗）攤，圓塔 Rundetårn 旁邊。</p>
+      <p class="place-meta">點餐念 <b>ㄆㄙㄜ</b>（pølser）。</p>
+      <a class="place-link" href="https://maps.app.goo.gl/Uk7gfeZdt45pcXgu6" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <div class="section-eyebrow">02</div>
+    <div class="section-row">
+      <h2>Shop &amp; Design</h2>
+      <div class="count">逛街與設計 · 8</div>
+    </div></div>
+
+  <div class="place">
+    <div class="place-index">12</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">HAY House</span></div>
+      <p class="place-desc">HAY 三層樓旗艦 showroom。家具、文具、小器物，買不下手也值得朝聖。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/HAY+House/data=!4m2!3m1!1s0x465253172e53d3e1:0x5e23b7bb7cb71a4a" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">13</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Magasin du Nord</span></div>
+      <p class="place-desc">哥本哈根老牌百貨，建築本身漂亮。Kongens Nytorv 那家有 Hallernes Smørrebrød 可順便吃，地下美食街水準穩。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/%E9%BA%A5%E6%A0%BC%E8%BE%9B%C2%B7%E8%AB%BE%E5%BE%B7%E7%99%BE%E8%B2%A8/data=!4m2!3m1!1s0x46525317a260945f:0xb344a32d2ddd342a" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">14</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Illum</span><span class="place-tag muted">補充</span></div>
+      <p class="place-desc">Strøget 主街上的精品百貨，路線比 Magasin 更高端、更多國際品牌。屋頂 terrace 可以看 Rundetårn 圓塔，是內行的免費景觀點。</p>
+      <a class="place-link" href="https://www.google.com/maps/search/Illum+%C3%98stergade+52+Copenhagen" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">15</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Studio Arhoj</span></div>
+      <p class="place-desc">當代丹麥陶藝工作室，以圓胖「Family」小陶人聞名，每隻都不一樣。可買可參觀，地點在 Refshaleøen 工業區。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Studio+Arhoj/data=!4m2!3m1!1s0x46525369b29aca5b:0x34cb9c0f14130ab1" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">16</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Notre Dame</span><span class="place-tag muted">家飾</span></div>
+      <p class="place-desc">名字像教堂但其實是家飾店，1978 年開業。餐具、燈具、織品、文具一站購足。Nørregade 7，聖母教堂對面。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Notre+Dame/data=!4m2!3m1!1s0x46525311cc4d96c9:0xf85b7780ddbf7764" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">17</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Politikens Boghal</span></div>
+      <p class="place-desc">Rådhuspladsen 旁的書店，有英文區。下雨天躲進來剛好。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Politikens+Boghal/data=!4m2!3m1!1s0x4652530e08c34735:0xf575419ba699a54c" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">18</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">The LEGO Store Tivoli Gardens</span></div>
+      <p class="place-desc">Tivoli 入口旁的旗艦店，限量款多。給有 LEGO 控的朋友。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/The+LEGO%C2%AE+Store+Tivoli+Gardens/data=!4m2!3m1!1s0x46525327036adfd5:0x6be0180577a587f9" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">19</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">MUJI København</span></div>
+      <p class="place-desc">MUJI 的哥本哈根分店，由當地百貨集團經營，店內有不少丹麥在地選品 — 跟日本店的選品不太一樣，值得逛。陽台漂亮。</p>
+      <a class="place-link" href="https://maps.app.goo.gl/Uo15XVjB9HaNVS6a7" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <div class="section-eyebrow">03</div>
+    <div class="section-row">
+      <h2>See &amp; Do</h2>
+      <div class="count">景點與體驗 · 5</div>
+    </div></div>
+
+  <div class="place">
+    <div class="place-index">20</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Tivoli Gardens</span></div>
+      <p class="place-desc">1843 年開業，世界第二老的遊樂園，迪士尼靈感來源之一。建議晚上去看燈光，冬天聖誕季也值得。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Tivoli+Gardens/data=!4m2!3m1!1s0x4652531280f6eaf3:0xd9b50b0db50b27b0" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">21</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Frederik's Church (Marble Church)</span></div>
+      <p class="place-desc">巴洛克圓頂教堂，丹麥最大圓頂。Amalienborg 王宮旁，可預約爬上圓頂俯瞰市區。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Frederik's+Church/data=!4m2!3m1!1s0x46525318baa785bd:0x6aaec3bb37796fde" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">22</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Torvehallerne</span></div>
+      <p class="place-desc">兩棟玻璃食物市場：麵包、起司、海鮮、生蠔吧、咖啡。點幾樣分著吃就是一餐。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Torvehallerne/data=!4m2!3m1!1s0x465253051285311b:0x7374ede35ce9623b" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">23</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Folkehuset Absalon</span><span class="place-tag">共食</span></div>
+      <p class="place-desc">Vesterbro 的「人民之家」，改造後的舊教堂。每晚 6 點 fællesspisning 共食，180 個陌生人同桌，75–100 DKK。</p>
+      <p class="place-meta">17:00 前到，線上訂或現場碰運氣。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Folkehuset+Absalon/data=!4m2!3m1!1s0x4652537644f2540d:0x52c1a2c38a7a35e0" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">24</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Phoenix Copenhagen</span><span class="place-tag muted">飯店</span></div>
+      <p class="place-desc">四星 deluxe 飯店，Amalienborg 跟 Nyhavn 之間。歷史建築改建，地點極好。朋友要找有 character 的住處就推這家。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Phoenix+Copenhagen/data=!4m2!3m1!1s0x465253187e1357d7:0x3bfdb661fdbda65" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <div class="section-eyebrow">04</div>
+    <div class="section-row">
+      <h2>Yarn</h2>
+      <div class="count">毛線店 · 4</div>
+    </div></div>
+
+  <div class="place">
+    <div class="place-index">25</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Sommerfuglen</span></div>
+      <p class="place-desc">哥本哈根最有名的毛線店之一。選纖細緻、有書籍與毛線套組。氣氛安靜、店員專業。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Sommerfuglen/data=!4m2!3m1!1s0x4652531162b7256d:0xb554aed2541fe94d" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">26</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Tante Grøn CPH</span></div>
+      <p class="place-desc">Frederiksberg 的精品毛線店，選 Isager、Filcolana、Hedgehog Fibres、Rosa Pomar 等品牌，有自家私房線。店內也賣手工飾品與包款。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Tante+Gr%C3%B8n+CPH/data=!4m2!3m1!1s0x465253bba7c9045f:0xe93620d0f87bc583" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">27</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Knitting for Olive</span></div>
+      <p class="place-desc">同名丹麥獨立品牌的店面（Pure Silk、Soft Silk Mohair、Compatible Cashmere 那家）。粉絲朝聖點。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Knitting+for+Olive/data=!4m2!3m1!1s0x465253b769263ed7:0xd4a587545e565a54" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">28</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Uldstedet</span></div>
+      <p class="place-desc">「羊毛之地」，在 Nørreport 車站旁，交通方便。在地客多。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Uldstedet/data=!4m2!3m1!1s0x4652531003f9c6d9:0xdba903ed32f89aae" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <div class="section-eyebrow">05</div>
+    <div class="section-row">
+      <h2>Day Trip · Sweden Side</h2>
+      <div class="count">周邊延伸 · 5</div>
+    </div></div>
+
+  <div class="place">
+    <div class="place-index">29</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Helsingborg</span></div>
+      <p class="place-desc">瑞典南部港口城市，跟丹麥 Helsingør 隔海對望。從哥本哈根火車約 50 分鐘 + 短渡輪。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Helsingborg/data=!4m2!3m1!1s0x46522d7a50a22925:0x4019078290e7a90" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">30</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Sofiero Palace</span></div>
+      <p class="place-desc">Helsingborg 附近的瑞典皇家別墅與花園。杜鵑花季 5–6 月。咖啡廳眺望海峽。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Sofiero+Palace/data=!4m2!3m1!1s0x465231e458c6448d:0x61bf522225519138" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">31</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Mölle</span></div>
+      <p class="place-desc">Kullaberg 半島上的小漁村，徒步、燈塔、海岸線。淡季去人少。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/M%C3%B6lle/data=!4m2!3m1!1s0x465220ac09ce1585:0xa01907aa3403c30" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">32</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Hotel Kullaberg</span></div>
+      <p class="place-desc">Mölle 山坡上的 1900 年代老飯店，眺望海峽。在 Kullaberg 過夜首選。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Hotel+Kullaberg/data=!4m2!3m1!1s0x465220ae9e976c79:0x90a973c8585212c6" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">33</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Continental Palace</span><span class="place-tag muted">建築</span></div>
+      <p class="place-desc">Helsingborg 火車站旁的 1882 年新文藝復興建築，原 Hotel Continental（飯店 2004 已關）。建築外觀仍值得繞過去看。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Continental+Palace/data=!4m2!3m1!1s0x4652333b012f6785:0x785728afa6bdff15" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <div class="section-eyebrow">06</div>
+    <div class="section-row">
+      <h2>Malmö &amp; Skåne · Cafés</h2>
+      <div class="count">瑞典咖啡 · 4</div>
+    </div></div>
+
+  <div class="place">
+    <div class="place-index">34</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Lilla Kafferosteriet</span></div>
+      <p class="place-desc">瑞典第一家精品咖啡微烘焙商（2005 年起），Malmö 市區 Baltzarsgatan 跟 Lokstallarna 兩家店。供應給兩星米其林 Vyn 和 Vollmers。胡蘿蔔蛋糕有名。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Lilla+Kafferosteriet/data=!4m2!3m1!1s0x4653a3fd0627d4e1:0x19bfc9b672f45db8" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">35</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Café Fridhem</span></div>
+      <p class="place-desc">Fridhemstorget 旁的社區咖啡與糕點店，每天現做派與三明治。室內外座位，價格友善。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Caf%C3%A9+Fridhem/data=!4m2!3m1!1s0x4653a6af133d4a5f:0x32a3e1ffdf339743" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">36</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Smålands kafe</span><span class="place-tag muted">Lund</span></div>
+      <p class="place-desc">Lund 大學 Smålands 學生 nation 經營的咖啡（Kalles Kafé），氛圍左派、文藝。Lund 火車從 Malmö 中央 10 分鐘。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Sm%C3%A5lands+kafe/data=!4m2!3m1!1s0x4653a10d83c29923:0xd96f69180ecf233c" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">37</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Vismarlövs Café &amp; Bagarstuga</span><span class="place-tag muted">鄉間</span></div>
+      <p class="place-desc">Klågerup 鄉間的老式烘焙咖啡（Carina Levin 經營），石窯麵包、自家派與招牌香料蛋糕。Malmö 開車 20–30 分鐘，dog-friendly。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Vismarl%C3%B6vs+Caf%C3%A9+%26+Bagarstuga+AB/data=!4m2!3m1!1s0x46539b921d1fa825:0x6d22cef657bda416" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Chloe · Google Maps Archive</span>
+  <i>Print to PDF · Cmd + P</i>
+  <span>2026</span>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>Ísland — Chloe's Pocket</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..600;1,9..144,200..500&family=Plus+Jakarta+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf9f4;
+    --paper: #f6f4ed;
+    --ink: #1c1a17;
+    --ink-soft: #8a8479;
+    --ink-faint: #c5c0b3;
+    --line: #ebe7da;
+    --line-soft: #f1eee4;
+    --hairline: rgba(28, 26, 23, 0.14);
+    --accent: #5d6b54;
+    --accent-soft: #aab2a0;
+    --serif: "Fraunces", "PP Editorial New", "Cormorant Garamond", "New York", "Songti TC", Georgia, serif;
+    --sans: "Plus Jakarta Sans", "Geist", "SF Pro Text", -apple-system, system-ui, "Hiragino Sans", "Noto Sans TC", "PingFang TC", sans-serif;
+    --max: 880px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 14.5px;
+    line-height: 1.65;
+    letter-spacing: 0.005em;
+    padding: 96px 36px 140px;
+    font-weight: 300;
+    position: relative;
+  }
+  /* Subtle film-grain overlay for tactile depth */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>");
+    mix-blend-mode: multiply;
+  }
+  .wrap { max-width: var(--max); margin: 0 auto; position: relative; z-index: 1; }
+
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    margin-bottom: 96px;
+    font-size: 9.5px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .meta-row .dot {
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 10px;
+    vertical-align: middle;
+  }
+  .meta-row strong { color: var(--ink); font-weight: 500; }
+
+  header {
+    margin-bottom: 140px;
+    position: relative;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 250;
+    font-size: 132px;
+    letter-spacing: -0.04em;
+    line-height: 0.86;
+    margin-bottom: 0;
+    color: var(--ink);
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+  }
+  h1 .alt {
+    font-style: italic;
+    font-weight: 200;
+    color: var(--accent);
+    letter-spacing: -0.035em;
+  }
+  h1 .small {
+    display: block;
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 56px;
+    font-weight: 500;
+  }
+  h1 .small em {
+    font-style: normal;
+    color: var(--accent);
+    margin: 0 6px;
+    font-weight: 400;
+  }
+
+  section {
+    margin-bottom: 120px;
+    page-break-inside: auto;
+  }
+
+  .section-head {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-bottom: 22px;
+    margin-bottom: 44px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: transparent;
+    box-shadow: inset 0 0 0 1px rgba(28, 26, 23, 0.12);
+    font-family: var(--sans);
+    font-size: 9.5px;
+    letter-spacing: 0.28em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .section-eyebrow::before {
+    content: "Part";
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.22em;
+  }
+  .section-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .section-head h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 56px;
+    letter-spacing: -0.028em;
+    color: var(--ink);
+    line-height: 1;
+    font-variation-settings: "opsz" 100;
+  }
+  .section-head h2 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 250;
+  }
+  .section-head .count {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .place {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 0 32px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--hairline);
+    page-break-inside: avoid;
+    transition: opacity 600ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .place:last-child { border-bottom: none; }
+  .place-index {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 24px;
+    letter-spacing: -0.02em;
+    color: var(--ink-faint);
+    font-weight: 250;
+    padding-top: 2px;
+    line-height: 1;
+  }
+  .place-body {
+    max-width: 620px;
+  }
+  .place-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+  .place-name {
+    font-family: var(--serif);
+    font-size: 27px;
+    font-weight: 300;
+    letter-spacing: -0.022em;
+    color: var(--ink);
+    line-height: 1.18;
+    font-variation-settings: "opsz" 60;
+  }
+  .place-tag {
+    font-size: 8.5px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: transparent;
+    box-shadow: inset 0 0 0 1px rgba(93, 107, 84, 0.4);
+    border: 0;
+    padding: 4px 9px 3px;
+    border-radius: 999px;
+    line-height: 1;
+    align-self: center;
+    font-weight: 500;
+  }
+  .place-tag.muted {
+    color: var(--ink-soft);
+    box-shadow: inset 0 0 0 1px rgba(28, 26, 23, 0.1);
+  }
+  .place-desc {
+    color: var(--ink);
+    font-size: 14.5px;
+    line-height: 1.75;
+    margin: 10px 0 14px;
+    font-weight: 300;
+    letter-spacing: 0.005em;
+  }
+  .place-meta {
+    color: var(--ink-soft);
+    font-size: 12.5px;
+    letter-spacing: 0.01em;
+    margin-bottom: 18px;
+    padding: 8px 14px;
+    background: var(--paper);
+    border-radius: 8px;
+    border: 0;
+    box-shadow: inset 0 0 0 1px rgba(28, 26, 23, 0.04);
+    display: inline-block;
+    font-weight: 300;
+  }
+  .place-meta::before { content: "↳ "; color: var(--accent); margin-right: 4px; }
+  .place-link {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px 7px 16px;
+    border-radius: 999px;
+    box-shadow: inset 0 0 0 1px rgba(28, 26, 23, 0.16);
+    font-weight: 500;
+    transition: all 400ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .place-link::after {
+    content: "↗";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--bg);
+    font-size: 9px;
+    letter-spacing: 0;
+    transition: transform 400ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .place-link:hover {
+    box-shadow: inset 0 0 0 1px var(--accent);
+    color: var(--accent);
+  }
+  .place-link:hover::after {
+    background: var(--accent);
+    transform: translate(2px, -2px) scale(1.06);
+  }
+
+  footer {
+    margin-top: 120px;
+    padding-top: 22px;
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--ink-soft);
+    font-size: 9.5px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  footer i {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    text-transform: none;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    font-size: 14px;
+  }
+
+  @media print {
+    body { padding: 32px; background: white; font-weight: 300; }
+    body::before { display: none; }
+    h1 { font-size: 80px; }
+    .section-head h2 { font-size: 42px; }
+    .place { page-break-inside: avoid; }
+    section { page-break-inside: auto; }
+    .section-head { page-break-after: avoid; }
+    .place-link {
+      color: var(--ink);
+      box-shadow: inset 0 0 0 1px rgba(28, 26, 23, 0.2);
+    }
+    .place-link::after { background: var(--ink); color: white; }
+  }
+  @media (max-width: 640px) {
+    body { padding: 52px 22px 96px; }
+    h1 { font-size: 64px; letter-spacing: -0.035em; }
+    h1 .small { letter-spacing: 0.3em; margin-top: 36px; }
+    header { margin-bottom: 80px; }
+    .section-head h2 { font-size: 36px; }
+    section { margin-bottom: 72px; }
+    .place { grid-template-columns: 44px 1fr; gap: 0 18px; padding: 24px 0; }
+    .place-index { font-size: 18px; }
+    .place-name { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="meta-row">
+  <span><strong>Pocket Guide</strong><span class="dot"></span>By Chloe</span>
+  <span>Edition Two · Ísland</span>
+</div>
+
+<header>
+  <h1>
+    Ís<span class="alt">land</span>
+    <span class="small">Iceland</span>
+  </h1>
+</header>
+
+<section>
+  <div class="section-head">
+    <div class="section-eyebrow">01</div>
+    <div class="section-row">
+      <h2>Eat & Drink</h2>
+      <div class="count">餐廳 · 5</div>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">01</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Messinn</span></div>
+      <p class="place-desc">Reykjavík 中央的有名魚料理餐廳，招牌是熱鐵盤魚（fish pan）。多家分店，份量好。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Messinn/data=!4m2!3m1!1s0x48d60b2d5e1084f3:0xaa96132cf3b45ef7" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">02</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Hlemmur Mathöll</span></div>
+      <p class="place-desc">中央區的食物市場，多家攤位（披薩、海鮮、咖啡、亞洲菜），氣氛年輕。casual lunch 首選。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Hlemmur+Math%C3%B6ll/data=!4m2!3m1!1s0x48d674c936cc2353:0x13dad611f6e6553f" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">03</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Sæta Húsið</span><span class="place-tag muted">甜點</span></div>
+      <p class="place-desc">Laugavegur 6 的「甜屋」，1871 年的二老建築。冰島第一家賣 rolled ice cream，也有 bubble waffle 跟辣巧克力。8:00–22:00。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/S%C3%A6ta+H%C3%BAsi%C3%B0/data=!4m2!3m1!1s0x48d675819f2586df:0x3177618e399337da" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">04</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Port 9</span><span class="place-tag muted">酒吧</span></div>
+      <p class="place-desc">Veghúsarstígur 9 的酒吧，2016 開幕。100+ 款酒 + 冰島起司拼盤，安靜舒服。週二–日 16:00–23:00，週一休。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Port+9/data=!4m2!3m1!1s0x48d674cda20a00d7:0xdc5b0531a6051086" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">05</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Friðheimar</span><span class="place-tag muted">Golden Circle</span></div>
+      <p class="place-desc">Golden Circle 路線上的番茄溫室餐廳。番茄湯 + 麵包吃到飽是招牌，氛圍超特別（在玻璃溫室裡用餐）。必訂位。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Fri%C3%B0heimar/data=!4m2!3m1!1s0x48d696fbe383f7bb:0xdee6f1f7177295af" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+</section>
+
+<section>
+  <div class="section-head">
+    <div class="section-eyebrow">02</div>
+    <div class="section-row">
+      <h2>Wool & Yarn</h2>
+      <div class="count">毛線 · 12</div>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">06</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Mjúk Iceland</span></div>
+      <p class="place-desc">Laugavegur 23（總店，1916 年的維京壁畫老屋），冰島本地設計的羊毛產品 + cafe。三家分店都在 Reykjavík。質感比觀光店高一級。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Mj%C3%BAk+Iceland/data=!4m2!3m1!1s0x48d67520c200c603:0x82da7ade2c03cafc" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">07</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Storkurinn</span></div>
+      <p class="place-desc">Síðumúli 20 的經典毛線店，當地織者最愛。夏天（6–8 月）週六休。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Storkurinn/data=!4m2!3m1!1s0x48d674cc38f538e9:0x8a3f1913a5b6eab1" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">08</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">The Handknitting Association of Iceland</span></div>
+      <p class="place-desc">Skólavörðustígur 的織者協會店，買得到真正的 lopapeysa（冰島羊毛毛衣，有手工認證）。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/The+Handknitting+Association+of+Iceland/data=!4m2!3m1!1s0x48d674cd26fe7ebf:0xf17970639ea1a672" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">09</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Hespa</span><span class="place-tag muted">鄉間</span></div>
+      <p class="place-desc">Guðrún Bjarnadóttir 經營的開放式植物染工作室（Hespuhúsið），用大黃、地衣、魯冰花做天然色。可預約看染製過程，要先打電話。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Hespa/data=!4m2!3m1!1s0x48d65f104c7d77bf:0xb4f2122b02a42680" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">10</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Þingborg Ullarverslun</span><span class="place-tag muted">Selfoss</span></div>
+      <p class="place-desc">Selfoss 附近的羊毛店，當地農場羊毛 + 植物染。Golden Circle 路線順路。週一–六 10:00–17:00。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/%C3%9Eingborg+Ullarverslun/data=!4m2!3m1!1s0x48d6f503cf432785:0x35773fb6f1f47626" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">11</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Uppspuni Mini Mill & Yarn Shop</span><span class="place-tag muted">農場</span></div>
+      <p class="place-desc">農場上的小型紡線廠 + 毛線店，可以看羊毛加工流程。Niche 但值得。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Uppspuni+Mini+Mill+%26+Yarn+Shop/data=!4m2!3m1!1s0x48d6f1508124c7bf:0x419534c99ea016f0" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">12</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Ullarverið — Icelandic Woolmarket & Mill</span></div>
+      <p class="place-desc">羊毛紡線廠 + 賣店，看製程一站到位。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Ullarveri%C3%B0+-+Icelandic+Woolmarket+%26+Mill/data=!4m2!3m1!1s0x48d695007b65c193:0xb00727f99a4a522c" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">13</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Álafoss</span><span class="place-tag muted">品牌+地名</span></div>
+      <p class="place-desc">冰島經典羊毛品牌的旗艦店，店面就在 Álafosskvosin 小村裡（有同名瀑布）。離 Reykjavík 約 15 分鐘車程。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/%C3%81lafoss/data=!4m2!3m1!1s0x48d676c48b85c1f5:0xe5b5816002871b80" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">14</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Hannyrðaverslunin Sporið</span></div>
+      <p class="place-desc">Efstaland 26 的毛線 + 刺繡店。注意營業時間極短：週一–五 12:00–16:00，週末休。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Hannyr%C3%B0averslunin+Spori%C3%B0/data=!4m2!3m1!1s0x48d674a658989a99:0xedc7d3609acce40d" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">15</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Rammagerðin</span></div>
+      <p class="place-desc">冰島經典手工藝品店，自 1940 年。lopapeysa + 設計小物。中央區好幾家。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Rammager%C3%B0in/data=!4m2!3m1!1s0x48d67557577b70ef:0xab624db468e9fbc1" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">16</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Varma</span></div>
+      <p class="place-desc">冰島羊毛品牌，毛衣 + 帽子 + 圍巾質感穩。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Varma/data=!4m2!3m1!1s0x48d6750002f83d29:0xbf51aa5655d82a2d" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">17</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Icewear</span><span class="place-tag muted">戶外</span></div>
+      <p class="place-desc">戶外 + 羊毛品牌，多家分店。比較觀光路線但有些款式實穿。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Icewear/data=!4m2!3m1!1s0x48d674cd555e83f1:0x80896c7cf629ce7f" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+</section>
+
+<section>
+  <div class="section-head">
+    <div class="section-eyebrow">03</div>
+    <div class="section-row">
+      <h2>Nature & Hot Springs</h2>
+      <div class="count">自然 · 11</div>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">18</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Thingvellir National Park</span><span class="place-tag muted">Golden Circle</span></div>
+      <p class="place-desc">UNESCO 世界遺產，北美與歐亞板塊交界。冰島古議會的所在地（西元 930 年）。Golden Circle 第一站。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Thingvellir+National+Park/data=!4m2!3m1!1s0x48d6811ffb13697b:0x6b756c8b079262f2" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">19</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Geysir</span><span class="place-tag muted">Golden Circle</span></div>
+      <p class="place-desc">「geyser」這個字的起源地。原始 Geysir 已沒在噴，但隔壁 Strokkur 每 5–10 分鐘噴一次，高度約 20 米。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Geysir/data=!4m2!3m1!1s0x48d6a39f03424f3f:0xb4751c1a62e2283f" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">20</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Gullfoss</span><span class="place-tag muted">Golden Circle</span></div>
+      <p class="place-desc">雙層瀑布，冰島最有名的之一。看點：彩虹常駐 + 冰川融水的氣勢。Golden Circle 收尾。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Gullfoss+Falls/data=!4m2!3m1!1s0x48d6a574af45b6c9:0x2c6347db0b411601" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">21</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Kerid Crater</span><span class="place-tag muted">Golden Circle</span></div>
+      <p class="place-desc">火山口湖，紅色火山岩 + 寶藍湖水的對比超鮮明。比其他景點冷門但很值得。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Kerid+Crater/data=!4m2!3m1!1s0x48d68bb755f6f257:0x515a44e0c12ed907" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">22</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Brúarfoss</span><span class="place-tag muted">需健行</span></div>
+      <p class="place-desc">「藍色瀑布」，水色不可思議。要從停車場走來回 7km 步道才到（路徑近年變得清楚多了）。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Br%C3%BAarfoss/data=!4m2!3m1!1s0x48d699b42950c4e9:0x2611ea18f9caca81" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">23</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Urriðafoss</span></div>
+      <p class="place-desc">水量極大的寬瀑布，車就停在旁邊，1 號公路順路。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Urri%C3%B0afoss/data=!4m2!3m1!1s0x48d6f3f2079dc21d:0xd8b0fe23f4c484" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">24</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Haifoss</span><span class="place-tag muted">高地</span></div>
+      <p class="place-desc">122 米高的瀑布，藏在 Highlands。需要 4x4 才到，但景觀無人能敵。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Haifoss/data=!4m2!3m1!1s0x48d6b44f8c13ef9b:0x9f39ac266c43d9e4" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">25</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Brúarhlöð</span></div>
+      <p class="place-desc">Hvítá 河的小峽谷，藍色河水穿過火山岩。Golden Circle 附近，遊客比 Gullfoss 少。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Br%C3%BAarhl%C3%B6%C3%B0/data=!4m2!3m1!1s0x48d6bcaec4daa35f:0x90af3981db65a8e6" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">26</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Sky Lagoon</span><span class="place-tag muted">近 Reykjavík</span></div>
+      <p class="place-desc">新地熱溫泉（2021 開幕），有海景無邊際池 + 7 步驟北歐儀式（蒸氣、冷水、桑拿、體香鹽）。比 Blue Lagoon 質感更高。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Sky+Lagoon/data=!4m2!3m1!1s0x48d60b86ce2825a7:0x2abad76345ba6910" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">27</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Secret Lagoon</span><span class="place-tag muted">Flúðir</span></div>
+      <p class="place-desc">Flúðir 附近的鄉間天然溫泉（Gamla Laugin），1891 年就在用，氣氛粗獷自然。Golden Circle 收尾泡湯首選。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Secret+Lagoon/data=!4m2!3m1!1s0x48d695f3fbcf3a03:0xba84220820d3b4a9" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+</section>
+
+<section>
+  <div class="section-head">
+    <div class="section-eyebrow">04</div>
+    <div class="section-row">
+      <h2>Reykjavík Sights</h2>
+      <div class="count">市區景點 · 2</div>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">28</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Hallgrimskirkja</span></div>
+      <p class="place-desc">Reykjavík 地標教堂，靈感來自冰島玄武岩柱地形。74 米高，可以搭電梯上去俯瞰全市。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Hallgrimskirkja/data=!4m2!3m1!1s0x48d674cca0432db5:0xf7af28c4489daaef" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">29</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Ásmundarsalur</span><span class="place-tag muted">藝廊</span></div>
+      <p class="place-desc">1930 年代雕塑家 Ásmundur Sveinsson 自宅改建的當代藝廊，免費。位於 Freyjugata 41。建築本身就是雕塑作品。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/%C3%81smundarsalur/data=!4m2!3m1!1s0x48d674cb5302e8cb:0x762c809eb3ae746b" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+</section>
+
+<section>
+  <div class="section-head">
+    <div class="section-eyebrow">05</div>
+    <div class="section-row">
+      <h2>Stay & Camp</h2>
+      <div class="count">住宿露營 · 4</div>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">30</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Canopy by Hilton Reykjavik City Centre</span><span class="place-tag muted">飯店</span></div>
+      <p class="place-desc">Reykjavík 中央區的現代飯店，走路到 Laugavegur 主街很近。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Canopy+by+Hilton+Reykjavik+City+Centre/data=!4m2!3m1!1s0x48d674cd6e4899f9:0x27c23b8895afa11b" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">31</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Camping Selfoss</span><span class="place-tag muted">Selfoss</span></div>
+      <p class="place-desc">Selfoss 鎮上的露營區，是進入南海岸 / Golden Circle 的好基地。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Camping+Selfoss/data=!4m2!3m1!1s0x48d65fc8308234cb:0xa3b0465763732a50" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">32</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Mosskogar Camping</span><span class="place-tag muted">近 Reykjavík</span></div>
+      <p class="place-desc">Reykjavík 近郊的鄉間露營區。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Mosskogar+Camping/data=!4m2!3m1!1s0x48d6773bd2ace319:0x3c4e8d3b2c9d308" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="place">
+    <div class="place-index">33</div>
+    <div class="place-body">
+      <div class="place-head"><span class="place-name">Strandakirkja Camping</span><span class="place-tag muted">海岸</span></div>
+      <p class="place-desc">海岸線上的露營區，旁邊就是著名的 Strandakirkja 教堂。</p>
+      <a class="place-link" href="https://www.google.com/maps/place/Strandakirkja+Camping/data=!4m2!3m1!1s0x48d63fae661287e9:0x2e712d209fc1b306" target="_blank">Open in Maps</a>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <span>Chloe · Google Maps Archive</span>
+  <i>Print to PDF · Cmd + P</i>
+  <span>2026</span>
+</footer>
+
+</div>
+</body>
+</html>

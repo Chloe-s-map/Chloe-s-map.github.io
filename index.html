@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>Chloe's Pocket Guides</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..600;1,9..144,200..500&family=Plus+Jakarta+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf9f4;
+    --paper: #f6f4ed;
+    --ink: #1c1a17;
+    --ink-soft: #8a8479;
+    --ink-faint: #c5c0b3;
+    --line: #ebe7da;
+    --hairline: rgba(28, 26, 23, 0.14);
+    --accent: #5d6b54;
+    --serif: "Fraunces", "PP Editorial New", "New York", "Songti TC", Georgia, serif;
+    --sans: "Plus Jakarta Sans", "SF Pro Text", -apple-system, system-ui, "Hiragino Sans", "Noto Sans TC", "PingFang TC", sans-serif;
+    --max: 880px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body {
+    background: var(--bg); color: var(--ink); font-family: var(--sans);
+    font-size: 14.5px; line-height: 1.65; letter-spacing: 0.005em;
+    padding: 96px 36px 140px; font-weight: 300; position: relative;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 100;
+    opacity: 0.04; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>");
+  }
+  .wrap { max-width: var(--max); margin: 0 auto; position: relative; z-index: 1; }
+
+  .meta-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 0; margin-bottom: 96px;
+    font-size: 9.5px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--ink-soft); font-weight: 500;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .meta-row .dot { width: 4px; height: 4px; background: var(--accent); border-radius: 50%; display: inline-block; margin: 0 10px; vertical-align: middle; }
+  .meta-row strong { color: var(--ink); font-weight: 500; }
+
+  header { margin-bottom: 120px; }
+  h1 {
+    font-family: var(--serif); font-weight: 250; font-size: 110px;
+    letter-spacing: -0.04em; line-height: 0.88;
+    font-variation-settings: "opsz" 144;
+  }
+  h1 .alt { font-style: italic; font-weight: 200; color: var(--accent); letter-spacing: -0.035em; }
+  h1 .small {
+    display: block; font-family: var(--sans);
+    font-size: 10px; letter-spacing: 0.42em; text-transform: uppercase;
+    color: var(--ink-soft); margin-top: 56px; font-weight: 500;
+  }
+  .lede {
+    margin-top: 36px; max-width: 540px;
+    color: var(--ink); font-size: 16px; line-height: 1.7; font-weight: 300;
+  }
+  .lede em { font-family: var(--serif); font-style: italic; color: var(--accent); font-size: 17px; }
+
+  .guides {
+    display: flex; flex-direction: column; gap: 0;
+    border-top: 1px solid var(--hairline);
+  }
+  .guide {
+    display: grid; grid-template-columns: 72px 1fr auto;
+    align-items: center; gap: 32px;
+    padding: 36px 4px; border-bottom: 1px solid var(--hairline);
+    text-decoration: none; color: var(--ink);
+    transition: all 500ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .guide:hover { padding-left: 14px; background: var(--paper); }
+  .guide-num {
+    font-family: var(--serif); font-style: italic;
+    font-size: 32px; font-weight: 250; color: var(--ink-faint);
+    line-height: 1; letter-spacing: -0.02em;
+  }
+  .guide-body {}
+  .guide-title {
+    font-family: var(--serif); font-weight: 300;
+    font-size: 44px; letter-spacing: -0.025em; line-height: 1;
+    font-variation-settings: "opsz" 100;
+    margin-bottom: 8px;
+  }
+  .guide-title em { font-style: italic; color: var(--accent); font-weight: 250; }
+  .guide-desc { color: var(--ink-soft); font-size: 14px; font-weight: 300; line-height: 1.5; }
+  .guide-meta {
+    font-family: var(--sans); font-size: 10px;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--ink-soft); font-weight: 500; white-space: nowrap;
+  }
+  .guide-arrow {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px; border-radius: 999px;
+    background: var(--ink); color: var(--bg);
+    font-size: 13px; line-height: 1;
+    transition: transform 400ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .guide:hover .guide-arrow { background: var(--accent); transform: translate(3px, -3px) scale(1.08); }
+
+  footer {
+    margin-top: 120px; padding-top: 22px; border-top: 1px solid var(--hairline);
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--ink-soft); font-size: 9.5px;
+    letter-spacing: 0.32em; text-transform: uppercase; font-weight: 500;
+  }
+  footer i { font-family: var(--serif); font-style: italic; font-weight: 300;
+    text-transform: none; letter-spacing: 0.01em; color: var(--ink); font-size: 14px; }
+
+  @media (max-width: 640px) {
+    body { padding: 44px 22px 80px; }
+    h1 { font-size: 56px; }
+    .guide { grid-template-columns: 36px 1fr auto; gap: 18px; padding: 26px 4px; }
+    .guide-num { font-size: 22px; }
+    .guide-title { font-size: 30px; }
+    .guide-meta { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="meta-row">
+  <span><strong>Pocket Guides</strong><span class="dot"></span>By Chloe</span>
+  <span>maps.tzling.com</span>
+</div>
+
+<header>
+  <h1>
+    Pocket <span class="alt">Guides</span>
+    <span class="small">Curated From Years of Google Maps Marks</span>
+  </h1>
+  <p class="lede">
+    我多年來在 Google Maps 上慢慢標的點，整理成可以分享給朋友的清單。<em>城市、興趣、慢慢累積</em>。
+  </p>
+</header>
+
+<div class="guides">
+
+  <a href="/copenhagen/" class="guide">
+    <div class="guide-num">01</div>
+    <div class="guide-body">
+      <div class="guide-title">Køben<em>havn</em></div>
+      <div class="guide-desc">哥本哈根 37 個地點 — 餐廳、設計店、景點、毛線、瑞典周邊</div>
+    </div>
+    <div class="guide-meta">37 places <span class="guide-arrow">↗</span></div>
+  </a>
+
+  <a href="/iceland/" class="guide">
+    <div class="guide-num">02</div>
+    <div class="guide-body">
+      <div class="guide-title">Ís<em>land</em></div>
+      <div class="guide-desc">冰島 33 個地點 — Wool & Yarn 占 1/3、Golden Circle、Sky Lagoon、極光區露營</div>
+    </div>
+    <div class="guide-meta">33 places <span class="guide-arrow">↗</span></div>
+  </a>
+
+  <a href="/yarn/" class="guide">
+    <div class="guide-num">03</div>
+    <div class="guide-body">
+      <div class="guide-title">Gar<em>n</em></div>
+      <div class="guide-desc">全球毛線朝聖 35 家 — 冰島、北歐、日本（含 Okadaya / Daruma / Walnut）、台灣、荷蘭、阿根廷、美國</div>
+    </div>
+    <div class="guide-meta">35 shops <span class="guide-arrow">↗</span></div>
+  </a>
+
+</div>
+
+<footer>
+  <span>Chloe · 2026</span>
+  <i>Built with patience</i>
+  <span>maps.tzling.com</span>
+</footer>
+
+</div>
+</body>
+</html>
